@@ -19,7 +19,7 @@ def check_valid_multistage_params(mu_array, sacc_array, sigma_array, a1, b1_arra
 def get_alternating_mu_array(mu1, mu2, d, flag):
     """
     Generate a list of alternating drift rates with length `d`
-    len(sacc_array) = d - 1, len(mu_array) = d
+    len(sacc_array) = d - 1, len(mu_array) = d (???? should be equals)
     `flag`=0: mu1 -> mu2 -> mu1 -> ...
     `flag`=1: mu2 -> mu1 -> mu2 -> ...
     """
@@ -28,6 +28,28 @@ def get_alternating_mu_array(mu1, mu2, d, flag):
     for i in range(d):
         mu_array.append(current_mu)
         current_mu = mu2 if current_mu == mu1 else mu1
+    return np.array(mu_array)
+
+def get_alternating_addm_mu_array(mu1, mu2, d, flag):
+    """
+    Generate a list of alternating drift rates with length `d`
+    with transitions and latencies
+    len(sacc_array) = d - 1, len(mu_array) = d
+    `flag`=0: 0 -> mu1 -> 0 -> mu2 -> ...
+    `flag`=1: 0 -> mu2 -> 0 -> mu1 -> ...
+    """
+    mu_array = []
+    current_mu = mu2 if flag else mu1
+    transition = True
+
+    for i in range(d):
+        if transition:
+            mu_array.append(0)
+            transition = False
+        else:
+            mu_array.append(current_mu)
+            current_mu = mu2 if current_mu == mu1 else mu1
+            transition = True
     return np.array(mu_array)
 
 
