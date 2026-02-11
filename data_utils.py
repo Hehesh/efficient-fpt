@@ -176,8 +176,8 @@ def simulate_empirical_trial(
     r2 = r2_data[n]
 
     # --- Generate fixations ---
-    flag = rng.binomial(1, empirical_distributions['probFixLeftFirst']) # 1 for left first, 0 for right first
-    # flag = rng.binomial(1, 0.5) 
+    # flag = rng.binomial(1, empirical_distributions['probFixLeftFirst']) # 1 for left first, 0 for right first
+    flag = rng.binomial(1, 0.5) 
 
     fixations = []
     total_dur = 0.0
