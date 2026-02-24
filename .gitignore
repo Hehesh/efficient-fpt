@@ -182,3 +182,6 @@ examples/**/*.png
 
 examples/example4/bootstrap_estimates.npy
 examples/example4_new/timing
+
+data/*
+data_preview.ipynb
