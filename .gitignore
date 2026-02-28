@@ -185,3 +185,6 @@ examples/example4_new/timing
 
 data/*
 data_preview.ipynb
+
+# because of differing build path
+src/efficient_fpt/*.c
